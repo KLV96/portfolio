@@ -1,0 +1,2597 @@
+:root {
+  --primary: #646cff;
+  --bg-sky: #0f172a;
+  --bg-ground: #1e293b;
+  --track-color: #334155;
+  --train-body: #e11d48;
+  --train-cabin: #be123c;
+  --text-main: #f8fafc;
+}
+
+html {
+  min-height: 100%;
+  overflow-y: auto;
+}
+
+body {
+  margin: 0;
+  min-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--bg-ground);
+  color: var(--text-main);
+  font-family: 'Inter', sans-serif;
+}
+
+#world {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+  overflow: visible;
+}
+
+.sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 200%;
+  height: 60vh;
+  background: linear-gradient(to bottom, #0f172a, #1e293b);
+  z-index: 1;
+}
+
+.clouds-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.cloud {
+  position: absolute;
+  background: #fff;
+  border-radius: 50px;
+  opacity: 0.1;
+  /* Faint at night */
+  animation: drift linear infinite;
+}
+
+.cloud::after,
+.cloud::before {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+/* Cloud Shapes */
+.c1 {
+  width: 120px;
+  height: 40px;
+  top: 20%;
+  left: -150px;
+  animation-duration: 60s;
+  animation-delay: -10s;
+}
+
+.c1::after {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 20px;
+}
+
+.c1::before {
+  width: 40px;
+  height: 40px;
+  top: -15px;
+  left: 60px;
+}
+
+.c2 {
+  width: 100px;
+  height: 35px;
+  top: 40%;
+  left: -120px;
+  animation-duration: 45s;
+  animation-delay: -30s;
+}
+
+.c2::after {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 15px;
+}
+
+.c3 {
+  width: 140px;
+  height: 50px;
+  top: 10%;
+  left: -180px;
+  animation-duration: 70s;
+  animation-delay: -50s;
+}
+
+.c3::after {
+  width: 60px;
+  height: 60px;
+  top: -30px;
+  left: 25px;
+}
+
+.c3::before {
+  width: 50px;
+  height: 50px;
+  top: -20px;
+  left: 70px;
+}
+
+@keyframes drift {
+  from {
+    transform: translateX(-200px);
+  }
+
+  to {
+    transform: translateX(120vw);
+  }
+}
+
+/* Day Theme Clouds */
+body.university-theme .cloud {
+  opacity: 0.6;
+  /* More visible during day */
+}
+
+@keyframes pour {
+  from {
+    background-position: 0 0;
+  }
+
+  to {
+    background-position: 0 20px;
+  }
+}
+
+.c4 {
+  width: 110px;
+  height: 40px;
+  top: 15%;
+  left: -200px;
+  animation-duration: 55s;
+  animation-delay: -20s;
+}
+
+.c4::after {
+  width: 45px;
+  height: 45px;
+  top: -20px;
+  left: 20px;
+}
+
+.c5 {
+  width: 130px;
+  height: 45px;
+  top: 35%;
+  left: -160px;
+  animation-duration: 65s;
+  animation-delay: -40s;
+}
+
+.c5::after {
+  width: 55px;
+  height: 55px;
+  top: -25px;
+  left: 30px;
+}
+
+.c6 {
+  width: 90px;
+  height: 30px;
+  top: 50%;
+  left: -100px;
+  animation-duration: 40s;
+  animation-delay: -5s;
+}
+
+.c6::after {
+  width: 35px;
+  height: 35px;
+  top: -15px;
+  left: 10px;
+}
+
+.c7 {
+  width: 115px;
+  height: 38px;
+  top: 25%;
+  left: -170px;
+  animation-duration: 50s;
+  animation-delay: -15s;
+}
+
+.c7::after {
+  width: 48px;
+  height: 48px;
+  top: -22px;
+  left: 25px;
+}
+
+.c8 {
+  width: 125px;
+  height: 42px;
+  top: 45%;
+  left: -140px;
+  animation-duration: 58s;
+  animation-delay: -35s;
+}
+
+.c8::after {
+  width: 52px;
+  height: 52px;
+  top: -24px;
+  left: 35px;
+}
+
+.c9 {
+  width: 95px;
+  height: 32px;
+  top: 5%;
+  left: -110px;
+  animation-duration: 42s;
+  animation-delay: -55s;
+}
+
+.c9::after {
+  width: 38px;
+  height: 38px;
+  top: -18px;
+  left: 15px;
+}
+
+/* Rain */
+.rain-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  display: none;
+}
+
+.rain-drop {
+  position: absolute;
+  top: -20px;
+  width: 2px;
+  height: 15px;
+  background: rgba(255, 255, 255, 0.6);
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+/* Raining State */
+body.raining .sky {
+  background: linear-gradient(to bottom, #0f172a, #020617);
+  /* Darker sky */
+}
+
+body.raining .cloud {
+  background: #64748b;
+  /* Stormy grey clouds */
+  opacity: 0.8;
+}
+
+body.raining .rain-container {
+  display: block;
+}
+
+/* Adjust University Theme for Rain */
+body.university-theme.raining .sky {
+  background: linear-gradient(to bottom, #3b82f6, #1e3a8a);
+  /* Darker day sky */
+}
+
+.mountains {
+  position: absolute;
+  top: 30vh;
+  left: 0;
+  width: 200%;
+  height: 30vh;
+  background: linear-gradient(to top, #334155, transparent);
+  clip-path: polygon(0% 100%, 10% 20%, 20% 100%, 30% 10%, 40% 100%, 50% 30%, 60% 100%, 70% 15%, 80% 100%, 90% 40%, 100% 100%);
+  z-index: 2;
+  opacity: 0.5;
+}
+
+.ground {
+  position: absolute;
+  top: 60vh;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  min-height: 197vh;
+  height: auto;
+  padding-bottom: 50px;
+  background: var(--bg-ground);
+  z-index: 4;
+  /* Increased to be above campus */
+}
+
+.track {
+  position: absolute;
+  top: 20px;
+  left: 0;
+  width: 200%;
+  /* Will animate this */
+  height: 10px;
+  background: repeating-linear-gradient(90deg,
+      var(--track-color),
+      var(--track-color) 20px,
+      transparent 20px,
+      transparent 40px);
+  border-top: 4px solid #475569;
+  border-bottom: 4px solid #475569;
+}
+
+/* Futuristic Bullet Train */
+.train-container {
+  position: absolute;
+  top: 50vh;
+  bottom: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+  margin-top: 80px;
+}
+
+.train {
+  position: relative;
+  width: 280px;
+  /* Longer body */
+  height: 60px;
+  background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 50%, #94a3b8 100%);
+  border-radius: 0 4px 10px 100px;
+  /* Aerodynamic nose on the right (facing forward?) or left? Let's assume moving right */
+  /* Actually, if track moves left, train faces right. */
+  /* Let's make it face right. */
+  border-radius: 10px 200px 10px 10px;
+  /* Bullet nose on right */
+  box-shadow:
+    inset 0 -10px 20px rgba(0, 0, 0, 0.1),
+    0 0 15px rgba(100, 255, 218, 0.2);
+  /* Subtle neon glow */
+  overflow: hidden;
+}
+
+/* Stripe */
+.train::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 10px;
+  background: #0ea5e9;
+  /* Sky blue stripe */
+  box-shadow: 0 0 10px #0ea5e9;
+}
+
+/* Info Wrapper - Handles positioning relative to train */
+.info-wrapper {
+  margin-top: 20px;
+  position: absolute;
+  top: 140%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90vw;
+  /* Full viewport width */
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  z-index: 20;
+  pointer-events: none;
+  /* Let clicks pass through wrapper */
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+
+
+/* Train Info */
+.card-info {
+  position: relative;
+  width: 30%;
+  flex: 1 1 30%;
+  min-width: 300px;
+  top: auto;
+  left: auto;
+  transform: none;
+  background: #1e3a8a;
+  border: 2px solid #334155;
+  border-radius: 8px 8px 12px 12px;
+  padding: 20px;
+  color: #e5e7eb;
+  font-family: "Georgia", serif;
+  font-size: 1rem;
+  text-align: left;
+  pointer-events: auto;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.4);
+  /* Opacity handled by wrapper now */
+  opacity: 1;
+}
+
+/* Roof of the van */
+.card-info::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 10%;
+  width: 80%;
+  height: 15px;
+  background: #1e3a8a;
+  border-radius: 8px 8px 0 0;
+}
+
+
+/* Lorry head (front) */
+.card-info .lorry-head {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+  height: 30px;
+  background: #1e3a8a;
+  border-radius: 8px 8px 0 0;
+}
+
+
+/* Title inside the van */
+.card-info .title {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-weight: bold;
+  font-size: 1rem;
+  color: #38bdf8;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 4px;
+  text-align: center;
+}
+
+.card-info h3 {
+  margin: 0 0 5px 0;
+  color: #38bdf8;
+  font-size: 1rem;
+}
+
+.card-info p {
+  margin: 0 0 10px 0;
+  color: #cbd5e1;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.card-info .tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.card-info .tag {
+  background: #334155;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+
+.card-info ul li {
+  font-size: 1rem;
+}
+
+/* Controls - Default (Desktop) */
+.controls {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  display: flex;
+  gap: 20px;
+  pointer-events: auto;
+  z-index: 200;
+  /* Above everything */
+}
+
+
+
+/* Cockpit Window */
+.cabin {
+  position: absolute;
+  top: 10px;
+  right: 40px;
+  width: 60px;
+  height: 20px;
+  background: #0f172a;
+  border-radius: 5px 20px 5px 5px;
+  transform: skewX(-30deg);
+  border: 1px solid #334155;
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.2);
+}
+
+/* Passenger Windows */
+.window {
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  width: 140px;
+  height: 8px;
+  background: #0f172a;
+  border-radius: 4px;
+  box-shadow: 0 0 0 2px #334155;
+  /* Create multiple windows using gradient */
+  background-image: linear-gradient(90deg, #0f172a 0%, #0f172a 70%, transparent 70%, transparent 100%);
+  background-size: 20px 100%;
+}
+
+/* Wheels (Hidden/Aerodynamic) */
+.wheels {
+  position: absolute;
+  bottom: -5px;
+  left: 20px;
+  width: 200px;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0.8;
+}
+
+.wheel {
+  width: 40px;
+  height: 10px;
+  background: #334155;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  /* No spin for maglev/bullet look, or subtle vibration */
+}
+
+/* Engine Glow */
+.train::before {
+  content: '';
+  position: absolute;
+  bottom: 5px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background: radial-gradient(circle, #64ffda 0%, transparent 70%);
+  opacity: 0.6;
+  filter: blur(5px);
+}
+
+/* UI Layer */
+#ui-layer {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 100;
+  pointer-events: none;
+  /* Let clicks pass through to world if needed */
+}
+
+.header {
+  position: absolute;
+  top: 30px;
+  /* Align with buttons */
+  left: 30px;
+  /* Left side */
+  right: auto;
+  pointer-events: auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header h1 {
+  font-size: 3rem;
+  /* Bigger font */
+  margin: 0 0 5px 0;
+  color: var(--text-main);
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  /* Added shadow for better readability */
+}
+
+
+
+.year-display {
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+
+
+button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+button:disabled {
+  background: #475569;
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+/* Modules dropdown */
+.modules-toggle {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  margin-top: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.modules-toggle:hover {
+  background: #535bf2;
+}
+
+.modules-content {
+  margin-top: 8px;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.modules-content ul {
+  margin: 4px 0 12px 20px;
+}
+
+.modules-content h4 {
+  margin: 8px 0 4px;
+  font-size: 0.9rem;
+  color: #38bdf8;
+}
+
+.modules-content:not(.hidden) {
+  max-height: 800px;
+}
+
+
+
+
+/* Modal */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: auto;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s;
+}
+
+.modal.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-content {
+  background: #1e293b;
+  padding: 40px;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 600px;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+  border: 1px solid #475569;
+}
+
+.modal.visible .modal-content {
+  transform: translateY(0);
+}
+
+.close-modal {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: transparent;
+  font-size: 1.5rem;
+  padding: 5px;
+}
+
+.project-card {
+  background: #334155;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.project-card h3 {
+  margin-top: 0;
+}
+
+.tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0;
+}
+
+.tag {
+  background: #475569;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.links a {
+  color: #646cff;
+  margin-right: 15px;
+  text-decoration: none;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none;
+}
+
+/* University Theme (2016-2019) */
+body.university-theme .sky {
+  background: linear-gradient(to bottom, #60a5fa, #1d4ed8);
+  /* Brighter day sky */
+}
+
+body.university-theme .mountains {
+  opacity: 0;
+  /* Hide default mountains */
+}
+
+/* University Campus */
+.university-campus {
+  position: absolute;
+  bottom: 40%;
+  left: 0;
+  width: 100%;
+  height: 60vh;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  pointer-events: none;
+}
+
+body.university-theme .university-campus {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Kainos Scene */
+.kainos-scene {
+  position: absolute;
+  bottom: 40%;
+  left: 0;
+  width: 100%;
+  height: 50vh;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  pointer-events: none;
+}
+
+body.kainos-theme .kainos-scene {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+body.kainos-theme .university-campus {
+  opacity: 0;
+  transform: translateY(100px);
+  pointer-events: none;
+}
+
+.main-building {
+  position: relative;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.3));
+}
+
+/* Roof & Pediment */
+.roof-section {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  margin-bottom: -1px;
+  /* Fix gap */
+}
+
+.pediment {
+  width: 240px;
+  height: 80px;
+  background: #e2e8f0;
+  /* Light stone color */
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  border-bottom: 5px solid #cbd5e1;
+}
+
+.college-name {
+  font-family: 'Times New Roman', serif;
+  font-weight: bold;
+  font-size: 2rem;
+  /* Larger for short text */
+  color: #b91c1c;
+  /* King's Red */
+  margin-bottom: 5px;
+}
+
+.roof-side {
+  flex: 1;
+  height: 40px;
+  background: #475569;
+  /* Dark roof slate */
+  position: relative;
+}
+
+.roof-side.left {
+  transform: skewX(30deg);
+  margin-right: -20px;
+  border-radius: 5px 0 0 0;
+}
+
+.roof-side.right {
+  transform: skewX(-30deg);
+  margin-left: -20px;
+  border-radius: 0 5px 0 0;
+}
+
+/* Body */
+.building-body {
+  display: flex;
+  width: 100%;
+  background: #8c5343;
+  /* Brick Color */
+  border: 2px solid #5d362a;
+  position: relative;
+}
+
+.wing {
+  flex: 1;
+  padding: 20px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: repeating-linear-gradient(45deg,
+      #8c5343,
+      #8c5343 10px,
+      #7a4537 10px,
+      #7a4537 11px);
+  /* Subtle brick texture */
+}
+
+.center-section {
+  width: 240px;
+  background: #e2e8f0;
+  /* Stone center */
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-top: 10px;
+}
+
+/* Windows */
+.window-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.arched-window {
+  width: 40px;
+  height: 60px;
+  background: #93c5fd;
+  /* Blue glass */
+  border-radius: 20px 20px 0 0;
+  border: 3px solid #cbd5e1;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+  position: relative;
+}
+
+.arched-window::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #cbd5e1;
+  transform: translateX(-50%);
+}
+
+.arched-window::before {
+  content: '';
+  position: absolute;
+  top: 30px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #cbd5e1;
+}
+
+/* Columns */
+.columns-row {
+  display: flex;
+  justify-content: space-evenly;
+  height: 100%;
+  padding: 0 10px;
+}
+
+.column {
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(to right, #e2e8f0, #cbd5e1, #e2e8f0);
+  border-left: 1px solid #94a3b8;
+  border-right: 1px solid #94a3b8;
+}
+
+/* Entrance */
+.entrance {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 100px;
+  z-index: 1;
+}
+
+.door-arch {
+  width: 100%;
+  height: 100%;
+  background: #3f2621;
+  /* Dark wood */
+  border-radius: 40px 40px 0 0;
+  border: 4px solid #cbd5e1;
+  position: relative;
+}
+
+.door-arch::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #1e1513;
+}
+
+.building-base {
+  width: 620px;
+  height: 20px;
+  background: #475569;
+  border-radius: 2px;
+  margin-top: -2px;
+}
+
+/* Big Ben */
+.big-ben {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 50px;
+  /* Space between Ben and Uni */
+  filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.3));
+  position: relative;
+  z-index: 4;
+}
+
+.ben-spire {
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 40px solid #3f2e20;
+  /* Dark Stone */
+  position: relative;
+}
+
+.ben-spire::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: -15px;
+  width: 30px;
+  height: 5px;
+  background: #d4af37;
+  /* Gold accent */
+}
+
+.ben-belfry {
+  width: 30px;
+  height: 20px;
+  background: #5c4033;
+  border-left: 2px solid #3f2e20;
+  border-right: 2px solid #3f2e20;
+}
+
+.ben-clock-section {
+  width: 44px;
+  height: 44px;
+  background: #e2e8f0;
+  border: 2px solid #d4af37;
+  /* Gold trim */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.ben-clock-face {
+  width: 34px;
+  height: 34px;
+  background: #fff;
+  border-radius: 50%;
+  border: 2px solid #000;
+  position: relative;
+}
+
+.ben-hands {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 2px;
+  background: #000;
+  transform-origin: left center;
+  transform: rotate(-45deg);
+  /* 10:30ish */
+  animation: rotateClock 5s linear infinite;
+}
+
+.ben-hands::after {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  width: 2px;
+  height: 10px;
+  background: #000;
+}
+
+@keyframes rotateClock {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.ben-body {
+  width: 40px;
+  height: 250px;
+  background: #c2a685;
+  /* Limestone color */
+  border: 1px solid #8b7355;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.ben-decor {
+  width: 20px;
+  height: 60px;
+  background: repeating-linear-gradient(to bottom,
+      #a89070,
+      #a89070 2px,
+      transparent 2px,
+      transparent 10px);
+  border-left: 1px solid #8b7355;
+  border-right: 1px solid #8b7355;
+}
+
+/* London Eye - Structural */
+.london-eye {
+  position: absolute;
+  right: 5%;
+  bottom: 0;
+  z-index: 1;
+}
+
+.eye-wheel {
+  width: 280px;
+  height: 280px;
+  border: 2px solid #334155;
+  /* Outer steel rim */
+  border-radius: 50%;
+  position: relative;
+  /* Simulate truss rim with dashed border */
+  box-shadow:
+    inset 0 0 0 10px rgba(255, 255, 255, 0.1),
+    inset 0 0 0 12px #334155;
+  /* Inner steel rim */
+  animation: rotateEye 40s linear infinite;
+  margin-bottom: 25px;
+  z-index: 2;
+  background:
+    /* Cross bracing pattern for rim */
+    repeating-conic-gradient(rgba(51, 65, 85, 0.3) 0deg,
+      rgba(51, 65, 85, 0.3) 2deg,
+      transparent 2deg,
+      transparent 10deg);
+}
+
+.spokes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background:
+    /* Main Spokes */
+    repeating-conic-gradient(transparent 0deg,
+      transparent 21.5deg,
+      #334155 22deg,
+      #334155 23deg,
+      transparent 23.5deg,
+      transparent 45deg),
+    /* Inner truss ring */
+    radial-gradient(transparent 60%, #334155 60%, #334155 61%, transparent 61%);
+}
+
+.hub {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  background: #334155;
+  border: 4px solid #1e293b;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hub::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #94a3b8;
+  /* Bolt */
+  border-radius: 50%;
+}
+
+/* Capsules - Structural */
+.capsule {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #334155;
+  border-radius: 50%;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  /* Cross detail on capsule */
+  background-image:
+    linear-gradient(45deg, transparent 45%, #334155 45%, #334155 55%, transparent 55%),
+    linear-gradient(-45deg, transparent 45%, #334155 45%, #334155 55%, transparent 55%);
+  background-size: 100% 100%;
+}
+
+/* Position 16 capsules - Radius 140px (on rim) */
+.c1 {
+  transform: rotate(0deg) translate(140px) rotate(0deg);
+}
+
+.c2 {
+  transform: rotate(22.5deg) translate(140px) rotate(-22.5deg);
+}
+
+.c3 {
+  transform: rotate(45deg) translate(140px) rotate(-45deg);
+}
+
+.c4 {
+  transform: rotate(67.5deg) translate(140px) rotate(-67.5deg);
+}
+
+.c5 {
+  transform: rotate(90deg) translate(140px) rotate(-90deg);
+}
+
+.c6 {
+  transform: rotate(112.5deg) translate(140px) rotate(-112.5deg);
+}
+
+.c7 {
+  transform: rotate(135deg) translate(140px) rotate(-135deg);
+}
+
+.c8 {
+  transform: rotate(157.5deg) translate(140px) rotate(-157.5deg);
+}
+
+.c9 {
+  transform: rotate(180deg) translate(140px) rotate(-180deg);
+}
+
+.c10 {
+  transform: rotate(202.5deg) translate(140px) rotate(-202.5deg);
+}
+
+.c11 {
+  transform: rotate(225deg) translate(140px) rotate(-225deg);
+}
+
+.c12 {
+  transform: rotate(247.5deg) translate(140px) rotate(-247.5deg);
+}
+
+.c13 {
+  transform: rotate(270deg) translate(140px) rotate(-270deg);
+}
+
+.c14 {
+  transform: rotate(292.5deg) translate(140px) rotate(-292.5deg);
+}
+
+.c15 {
+  transform: rotate(315deg) translate(140px) rotate(-315deg);
+}
+
+.c16 {
+  transform: rotate(337.5deg) translate(140px) rotate(-337.5deg);
+}
+
+
+
+.eye-supports {
+  position: absolute;
+  top: 140px;
+  /* Center of the wheel (280/2) */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 0;
+  z-index: 1;
+  /* Behind wheel (z-index 2) */
+}
+
+.support-leg {
+  position: absolute;
+  top: 0;
+  width: 8px;
+  height: 160px;
+  /* Reach down to base */
+  background: #334155;
+  transform-origin: top center;
+  border-radius: 4px;
+}
+
+.support-leg.left {
+  transform: rotate(20deg);
+}
+
+.support-leg.right {
+  transform: rotate(-20deg);
+}
+
+.eye-base {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160px;
+  height: 20px;
+  background: #334155;
+  /* Dark concrete */
+  border-top: 4px solid #1e293b;
+  border-radius: 4px;
+  z-index: 2;
+  /* Structural details */
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding-bottom: 5px;
+}
+
+.eye-base::before,
+.eye-base::after {
+  content: '';
+  width: 20px;
+  height: 10px;
+  background: #475569;
+  /* Anchor blocks */
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+
+@keyframes rotateEye {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Red Phone Booth */
+.phone-booth {
+  position: relative;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 6;
+  margin-right: 40px;
+  /* Space from Big Ben */
+  filter: drop-shadow(0 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+.booth-top {
+  width: 54px;
+  height: 12px;
+  background: #dc2626;
+  border-radius: 12px 12px 0 0;
+  border: 1px solid #991b1b;
+  position: relative;
+}
+
+.booth-top::after {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  width: 40px;
+  height: 6px;
+  background: #dc2626;
+  border-radius: 4px 4px 0 0;
+  transform: translateX(-50%);
+  border: 1px solid #991b1b;
+  border-bottom: none;
+}
+
+.booth-body {
+  width: 50px;
+  height: 100px;
+  background: #dc2626;
+  border: 1px solid #991b1b;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding-top: 5px;
+}
+
+.booth-window {
+  width: 36px;
+  height: 22px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px solid #991b1b;
+  position: relative;
+}
+
+.booth-window::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: 100%;
+  background: #991b1b;
+  transform: translateX(-50%);
+}
+
+.booth-window::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: #991b1b;
+  transform: translateY(-50%);
+}
+
+/* Pedestrians */
+.pedestrians-container {
+  position: absolute;
+  top: -25px;
+  /* Stand on top of ground */
+  left: 0;
+  width: 100%;
+  height: 25px;
+  z-index: 8;
+  /* Between campus (5) and train (10) */
+  pointer-events: none;
+}
+
+.human {
+  position: absolute;
+  bottom: 0;
+  width: 10px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: walk linear infinite;
+}
+
+.umbrella {
+  position: absolute;
+  top: -8px;
+  width: 16px;
+  height: 8px;
+  background: #000;
+  border-radius: 16px 16px 0 0;
+  opacity: 0;
+  transition: opacity 0.5s;
+  z-index: 2;
+}
+
+.umbrella::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  width: 1px;
+  height: 6px;
+  background: #000;
+  transform: translateX(-50%);
+}
+
+body.raining .umbrella {
+  opacity: 1;
+}
+
+.head {
+  width: 6px;
+  height: 6px;
+  background: #cbd5e1;
+  border-radius: 50%;
+  margin-bottom: 1px;
+}
+
+.body {
+  width: 8px;
+  height: 10px;
+  background: #475569;
+  border-radius: 2px;
+}
+
+.legs {
+  width: 8px;
+  height: 8px;
+  position: relative;
+}
+
+.legs::before,
+.legs::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(to bottom, #1e293b 80%, #000 80%);
+  border-radius: 2px;
+  transform-origin: top center;
+  animation: stride 0.5s ease-in-out infinite alternate;
+}
+
+.legs::before {
+  left: 0;
+  animation-delay: 0s;
+}
+
+.legs::after {
+  right: 0;
+  animation-delay: 0.5s;
+  /* Opposite phase */
+}
+
+/* Human Variations */
+.h1 {
+  left: -20px;
+  animation-duration: 25s;
+  /* Slower */
+  animation-delay: 0s;
+}
+
+.h1 .body {
+  background: #ef4444;
+  /* Red Shirt */
+}
+
+.h1 .legs::before,
+.h1 .legs::after {
+  background: linear-gradient(to bottom, #1e293b 80%, #000 80%);
+  /* Dark Blue Trousers, Black Shoes */
+}
+
+.h2 {
+  left: -20px;
+  animation-duration: 35s;
+  /* Slower */
+  animation-delay: 7s;
+}
+
+.h2 .body {
+  background: #3b82f6;
+  /* Blue Shirt */
+}
+
+.h2 .legs::before,
+.h2 .legs::after {
+  background: linear-gradient(to bottom, #475569 80%, #fff 80%);
+  /* Grey Trousers, White Shoes */
+}
+
+.h3 {
+  left: -20px;
+  animation-duration: 30s;
+  /* Slower */
+  animation-delay: 3s;
+}
+
+.h3 .body {
+  background: #22c55e;
+  /* Green Shirt */
+}
+
+.h3 .legs::before,
+.h3 .legs::after {
+  background: linear-gradient(to bottom, #78350f 80%, #000 80%);
+  /* Brown Trousers, Black Shoes */
+}
+
+@keyframes walk {
+  from {
+    transform: translateX(-50px);
+  }
+
+  to {
+    transform: translateX(110vw);
+  }
+}
+
+@keyframes stride {
+  from {
+    transform: rotate(-20deg);
+  }
+
+  to {
+    transform: rotate(20deg);
+  }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .university-campus {
+    transform: scale(0.6) translateY(100px);
+    /* Scale 0.6 as requested */
+    transform-origin: bottom center;
+    width: 200%;
+    /* Double width to prevent clipping when scaled */
+    left: -50%;
+    /* Center the doubled width */
+    bottom: 40%;
+  }
+
+  /* Ensure theme toggle still works with transform */
+  body.university-theme .university-campus {
+    transform: scale(0.6) translateY(0);
+  }
+
+  .main-building {
+    width: 400px;
+    /* Reduce building width */
+    z-index: 2;
+    /* Ensure building is above eye */
+  }
+
+  .london-eye {
+    right: auto;
+    left: 50%;
+    top: 40%;
+    /* Set top as requested */
+    bottom: auto;
+    /* Reset bottom */
+    transform: translateX(-50%) scale(1.5);
+    /* Center and Scale up */
+    z-index: -1;
+    /* Behind university */
+  }
+
+  .eye-base,
+  .eye-supports,
+  .pedestrians-container {
+    display: none;
+  }
+
+  .train-container {
+    bottom: 35%;
+  }
+
+  .eye-wheel {
+    margin-bottom: 30px;
+  }
+
+  .university-info {
+    width: 340px;
+  }
+
+  .info-wrapper {
+    width: 300px;
+    flex-direction: column;
+    left: 43%;
+  }
+
+  .university-info {
+    width: 100%;
+  }
+
+
+
+  .controls {
+    position: absolute;
+    top: 120px;
+    /* Requested position */
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    justify-content: center;
+    z-index: 200;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    top: 20px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    align-items: center;
+    text-align: center;
+    width: 100%;
+  }
+
+  .header h1 {
+    font-size: 1.5rem;
+    /* Keep smaller on mobile */
+  }
+}
+
+/* Desktop Layout for Modules */
+@media (min-width: 769px) {
+  .modules-content:not(.hidden) {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+  }
+
+  .module-section {
+    flex: 1;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    padding-right: 20px;
+  }
+
+  .module-section:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .modules-content ul {
+    margin-top: 8px;
+    padding-left: 20px;
+  }
+}
+
+/* Kainos Theme (2019-2020) */
+body.kainos-theme.sunny-weather .sky {
+  background: linear-gradient(to bottom, #60a5fa, #1d4ed8);
+  /* Sunny day sky */
+}
+
+body.kainos-theme.sunny-weather .cloud {
+  opacity: 0.6;
+  /* Visible clouds */
+}
+
+/* Charitable Building */
+.charitable-building {
+  position: absolute;
+  bottom: 0;
+  left: 65%;
+  /* Position to the right of Kainos building */
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  pointer-events: none;
+}
+
+body.charitable-building-active .charitable-building {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.charitable-logo-container {
+  margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.charitable-logo {
+  width: 120px;
+  height: auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+}
+
+.charitable-roof {
+  width: 0;
+  height: 0;
+  border-left: 110px solid transparent;
+  border-right: 110px solid transparent;
+  border-bottom: 60px solid #475569;
+  /* Slate roof */
+  position: relative;
+  z-index: 2;
+}
+
+.charitable-body {
+  width: 180px;
+  height: 200px;
+  background: #cbd5e1;
+  /* Light grey body */
+  border: 4px solid #475569;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  box-shadow: 10px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.charitable-windows {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+}
+
+.window-row {
+  display: flex;
+  gap: 30px;
+}
+
+.win {
+  width: 30px;
+  height: 40px;
+  background: #93c5fd;
+  /* Light blue glass */
+  border: 2px solid #475569;
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.charitable-entrance {
+  position: absolute;
+  bottom: 0;
+  width: 60px;
+  height: 70px;
+  background: #334155;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border: 2px solid #1e293b;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Home Scene */
+.home-scene {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 150px;
+  height: 150px;
+  z-index: 4;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 1s ease-in-out, transform 1s ease-in-out;
+  pointer-events: none;
+}
+
+body.charitable-visible .home-scene {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.home-roof {
+  width: 0;
+  height: 0;
+  border-left: 75px solid transparent;
+  border-right: 75px solid transparent;
+  border-bottom: 60px solid #475569;
+  /* Slate roof */
+  position: relative;
+  z-index: 2;
+}
+
+.home-body {
+  width: 130px;
+  height: 90px;
+  background: #f1f5f9;
+  /* Light grey/white body */
+  border: 4px solid #475569;
+  position: relative;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.home-window {
+  position: absolute;
+  top: 20px;
+  width: 40px;
+  height: 30px;
+  background: #93c5fd;
+  /* Light blue glass */
+  border: 2px solid #475569;
+}
+
+.home-door {
+  width: 30px;
+  height: 25px;
+  background: #78350f;
+  /* Brown door */
+  border: 2px solid #475569;
+  border-bottom: none;
+}
+
+/* Kainos Scene */
+
+
+.kainos-building {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -10px;
+}
+
+.kainos-logo-container {
+  margin-bottom: 10px;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+  animation: floatLogo 3s ease-in-out infinite;
+}
+
+.kainos-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+}
+
+/* Kainos Building Structure */
+.kainos-structure {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.4));
+  transform: scale(1.1);
+  /* Make it slightly larger */
+}
+
+.kainos-roof {
+  width: 240px;
+  height: 25px;
+  background: #1a472a;
+  /* Deep Moss Green */
+  border: 3px solid #000;
+  border-radius: 2px;
+  z-index: 2;
+  /* Stronger speckled texture */
+  background-image:
+    radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px),
+    radial-gradient(rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 4px 4px, 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+
+.kainos-body {
+  width: 220px;
+  height: 320px;
+  background: #f3e5ab;
+  /* Cornsilk/Cream */
+  border: 3px solid #000;
+  border-top: none;
+  border-bottom: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 25px;
+  position: relative;
+  /* Paper texture effect */
+  background-image: repeating-linear-gradient(45deg, rgba(0, 0, 0, 0.02) 0px, rgba(0, 0, 0, 0.02) 1px, transparent 1px, transparent 4px);
+}
+
+.kainos-window-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  padding: 0 25px;
+  margin-bottom: auto;
+}
+
+.k-window {
+  width: 45px;
+  height: 45px;
+  background: #5dade2;
+  /* Brighter Blue */
+  border: 3px solid #000;
+  /* Scratchy glass texture */
+  background-image:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.6) 0%, transparent 40%),
+    radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.4) 1px, transparent 2px);
+  background-size: 100% 100%, 10px 10px;
+}
+
+.kainos-entrance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 160px;
+  margin-bottom: 0;
+}
+
+.entrance-overhang {
+  width: 100%;
+  height: 18px;
+  background: #1a472a;
+  /* Deep Moss Green */
+  border: 3px solid #000;
+  margin-bottom: -3px;
+  z-index: 2;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+.entrance-doors {
+  width: 140px;
+  height: 60px;
+  display: flex;
+  border-left: 3px solid #000;
+  border-right: 3px solid #000;
+  background: #f3e5ab;
+}
+
+.door-pillar {
+  width: 20px;
+  height: 100%;
+  background: #555;
+  /* Dark Grey */
+  border-right: 2px solid #000;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.door-pillar:last-child {
+  border-right: none;
+  border-left: 2px solid #000;
+}
+
+.door-glass {
+  flex: 1;
+  background: #5dade2;
+  border-right: 2px solid #000;
+  background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.4), transparent);
+}
+
+.door-glass:last-child {
+  border-right: none;
+}
+
+.kainos-base {
+  width: 240px;
+  height: 20px;
+  background: #1a472a;
+  /* Deep Moss Green */
+  border: 3px solid #000;
+  margin-top: -3px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.3) 1px, transparent 1px);
+  background-size: 4px 4px;
+}
+
+@keyframes floatLogo {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Dancing Man */
+body.charitable-visible .dancing-man {
+  display: none;
+}
+
+.dancing-man {
+  position: absolute;
+  bottom: 0;
+  left: 55%;
+  width: 40px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+}
+
+.dancing-man .head {
+  width: 20px;
+  height: 20px;
+  background: #fca5a5;
+  border-radius: 50%;
+  margin-bottom: 2px;
+  animation: headBob 0.5s infinite alternate;
+}
+
+.dancing-man .body {
+  width: 24px;
+  height: 40px;
+  background: #2563eb;
+  border-radius: 4px;
+  position: relative;
+  animation: bodyGroove 1s infinite ease-in-out;
+}
+
+.dancing-man .arm {
+  position: absolute;
+  top: 5px;
+  width: 8px;
+  height: 30px;
+  background: #2563eb;
+  transform-origin: top center;
+}
+
+.dancing-man .arm.left {
+  left: -6px;
+  animation: waveLeft 0.5s infinite alternate;
+}
+
+.dancing-man .arm.right {
+  right: -6px;
+  animation: waveRight 0.5s infinite alternate;
+}
+
+.dancing-man .money-bag {
+  position: absolute;
+  bottom: -15px;
+  right: -12px;
+  width: 16px;
+  height: 20px;
+  background: #d4af37;
+  /* Gold/Tan bag color */
+  border-radius: 50% 50% 5px 5px;
+  border: 1px solid #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-weight: bold;
+  color: #006400;
+  /* Dark Green money sign */
+  z-index: 11;
+  animation: shakeMoney 0.2s infinite;
+}
+
+.dancing-man .money-bag::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 6px;
+  background: #d4af37;
+  border: 1px solid #000;
+  border-radius: 2px;
+  clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+}
+
+.dancing-man .legs {
+  display: flex;
+  justify-content: space-between;
+  width: 24px;
+}
+
+.dancing-man .leg {
+  width: 8px;
+  height: 35px;
+  background: #1e293b;
+  transform-origin: top center;
+}
+
+.dancing-man .leg.left {
+  animation: danceLegLeft 0.5s infinite alternate;
+}
+
+.dancing-man .leg.right {
+  animation: danceLegRight 0.5s infinite alternate;
+}
+
+/* Dance Animations */
+@keyframes headBob {
+  from {
+    transform: translateY(0) rotate(-5deg);
+  }
+
+  to {
+    transform: translateY(2px) rotate(5deg);
+  }
+}
+
+@keyframes bodyGroove {
+
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-5deg);
+  }
+
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+@keyframes waveLeft {
+  from {
+    transform: rotate(20deg);
+  }
+
+  to {
+    transform: rotate(140deg);
+  }
+}
+
+@keyframes waveRight {
+  from {
+    transform: rotate(-20deg);
+  }
+
+  to {
+    transform: rotate(-140deg);
+  }
+}
+
+@keyframes shakeMoney {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(10deg);
+  }
+
+  75% {
+    transform: rotate(-10deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes danceLegLeft {
+  from {
+    transform: rotate(0deg);
+    height: 35px;
+  }
+
+  to {
+    transform: rotate(20deg);
+    height: 30px;
+  }
+}
+
+@keyframes danceLegRight {
+  from {
+    transform: rotate(0deg);
+    height: 35px;
+  }
+
+  to {
+    transform: rotate(-20deg);
+    height: 30px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .kainos-scene {
+    transform: scale(0.6) translateY(100px);
+    transform-origin: bottom center;
+    width: 200%;
+    left: -50%;
+    bottom: 35%;
+  }
+
+  body.kainos-theme .kainos-scene {
+    transform: scale(0.6) translateY(0);
+    bottom: 39% !important;
+  }
+
+  .dancing-man {
+    left: auto;
+    right: 20%;
+  }
+
+  .home-scene {
+    left: 10% !important;
+  }
+}
+
+/* Desktop Grid Layout for 2020-2022 */
+@media (min-width: 769px) {
+  body.charitable-visible .info-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: start;
+    justify-content: stretch;
+    width: 80vw;
+    /* Adjust width for grid */
+  }
+
+  body.charitable-visible .university-info {
+    width: auto;
+    flex: none;
+    max-width: none;
+  }
+
+  body.charitable-visible .university-info:nth-child(1) {
+    grid-row: span 2;
+  }
+
+  body.charitable-visible .university-info:nth-child(2) {
+    grid-column: 2;
+  }
+
+  body.charitable-visible .university-info:nth-child(3) {
+    grid-column: 2;
+  }
+}
+
+/* Pandemic Theme (2020-2022) */
+
+body.pandemic-mode .viruses-container {
+  display: block;
+}
+
+.viruses-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.virus {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  animation: floatVirus 4s infinite ease-in-out;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.v-body {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 30px;
+  height: 30px;
+  background: #15803d;
+  /* Dark green */
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: inset -2px -2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.v-spikes {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.v-spikes::before,
+.v-spikes::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 6px;
+  background: #15803d;
+  border-radius: 3px;
+  transform: translate(-50%, -50%);
+}
+
+.v-spikes::after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.v-body::before,
+.v-body::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 6px;
+  background: #15803d;
+  border-radius: 3px;
+  z-index: -1;
+}
+
+.v-body::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.v-body::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.v-eyes {
+  position: absolute;
+  top: 8px;
+  left: 5px;
+  width: 20px;
+  height: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.v-eye {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+  border-radius: 50%;
+  position: relative;
+  overflow: hidden;
+}
+
+.v-eye::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  width: 3px;
+  height: 3px;
+  background: #000;
+  border-radius: 50%;
+}
+
+/* Angry eyebrows using clip-path on eyes or pseudo-elements */
+.v-eye.left {
+  clip-path: polygon(0 0, 100% 30%, 100% 100%, 0 100%);
+}
+
+.v-eye.right {
+  clip-path: polygon(0 30%, 100% 0, 100% 100%, 0 100%);
+}
+
+.v-mouth {
+  position: absolute;
+  bottom: 6px;
+  left: 10px;
+  width: 10px;
+  height: 6px;
+  background: #000;
+  border-radius: 50% 50% 0 0;
+  /* Frown/Shouting */
+  transform: rotate(180deg);
+}
+
+.v-mouth::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 2px;
+  width: 2px;
+  height: 3px;
+  background: #fff;
+  /* Tooth */
+}
+
+.virus.v1 {
+  top: 20%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.virus.v2 {
+  top: 40%;
+  left: 30%;
+  animation-delay: 1s;
+}
+
+.virus.v3 {
+  top: 15%;
+  left: 60%;
+  animation-delay: 2s;
+}
+
+/* Back Button */
+.back-button-container {
+  position: absolute;
+  top: 90px;
+  right: 30px;
+  z-index: 200;
+  pointer-events: auto;
+}
+
+.back-home-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.back-home-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-2px);
+}
+
+.back-home-btn .btn-icon {
+  font-size: 1.1em;
+}
+
+.virus.v4 {
+  top: 50%;
+  left: 80%;
+  animation-delay: 0.5s;
+}
+
+.virus.v5 {
+  top: 30%;
+  left: 50%;
+  animation-delay: 1.5s;
+}
+
+@keyframes floatVirus {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(10deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .controls {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    align-items: center;
+  }
+
+  .back-button-container {
+    top: 180px;
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+}

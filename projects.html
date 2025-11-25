@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Projects - Rêwaz Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="stylesheet" href="src/projects.css">
+</head>
+
+<body>
+    <div class="library-wrapper">
+        <header class="library-header">
+            <div class="library-title">
+                <h1>Project Library</h1>
+                <p>Browse projects by year. Dive into a book to see more details.</p>
+            </div>
+            <a href="index.html" class="back-home-btn">
+                <span class="btn-icon">&#8592;</span> Back to Menu
+            </a>
+
+        </header>
+
+        <main class="library" aria-label="Project library shelves">
+            <div class="shelves">
+                <!-- Shelves injected by JS -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Dive-in overlays -->
+    <div class="dive-overlay" aria-hidden="true"></div>
+    <div class="dive-flash" aria-hidden="true"></div>
+
+    <!-- Modals injected by JS -->
+
+    <script type="module" src="src/projects.js"></script>
+</body>
+
+</html>

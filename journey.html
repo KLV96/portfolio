@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Developer Journey</title>
+  <link rel="stylesheet" href="./src/style.css" />
+  <style>
+    /* Critical CSS for loading state */
+    body {
+      margin: 0;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background: #1a1a1a;
+      color: #fff;
+      font-family: 'Inter', sans-serif;
+    }
+
+    #loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #1a1a1a;
+      z-index: 9999;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="loading">Loading Assets...</div>
+
+  <div id="ui-layer">
+    <div class="header">
+      <h1>Rêwaz Ismail - My Dev Journey</h1>
+      <div class="year-display">2016</div>
+    </div>
+
+    <div class="controls">
+      <button id="prev-btn" disabled>← Prev Station</button>
+      <button id="next-btn">Start Journey →</button>
+    </div>
+
+    <div class="back-button-container">
+      <a href="index.html" class="back-home-btn">
+        <span class="btn-icon">&#8592;</span> Back to menu
+      </a>
+    </div>
+
+
+
+    <div id="project-modal" class="modal hidden">
+      <div class="modal-content">
+        <button class="close-modal">×</button>
+        <h2 id="modal-year">2016</h2>
+        <div id="projects-list">
+          <!-- Projects injected here -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="world">
+    <div class="sky">
+      <div class="clouds-container">
+        <div class="cloud c1"></div>
+        <div class="cloud c2"></div>
+        <div class="cloud c3"></div>
+        <div class="cloud c4"></div>
+        <div class="cloud c5"></div>
+        <div class="cloud c6"></div>
+        <div class="cloud c7"></div>
+        <div class="cloud c8"></div>
+        <div class="cloud c9"></div>
+      </div>
+      <div class="rain-container"></div>
+    </div>
+    <div class="mountains"></div>
+
+    <div class="university-campus">
+      <!-- Red Phone Booth -->
+      <div class="phone-booth">
+        <div class="booth-top"></div>
+        <div class="booth-body">
+          <div class="booth-window"></div>
+          <div class="booth-window"></div>
+          <div class="booth-window"></div>
+        </div>
+      </div>
+
+      <!-- Big Ben -->
+      <div class="big-ben">
+        <div class="ben-spire"></div>
+        <div class="ben-belfry"></div>
+        <div class="ben-clock-section">
+          <div class="ben-clock-face">
+            <div class="ben-hands"></div>
+          </div>
+        </div>
+        <div class="ben-body">
+          <div class="ben-decor"></div>
+          <div class="ben-decor"></div>
+          <div class="ben-decor"></div>
+        </div>
+      </div>
+
+      <div class="main-building">
+        <div class="roof-section">
+          <div class="pediment">
+            <span class="college-name">KCL</span>
+          </div>
+          <div class="roof-side left"></div>
+          <div class="roof-side right"></div>
+        </div>
+        <div class="building-body">
+          <div class="wing left-wing">
+            <div class="window-row">
+              <div class="arched-window"></div>
+              <div class="arched-window"></div>
+            </div>
+            <div class="window-row">
+              <div class="arched-window"></div>
+              <div class="arched-window"></div>
+            </div>
+          </div>
+          <div class="center-section">
+            <div class="columns-row">
+              <div class="column"></div>
+              <div class="column"></div>
+              <div class="column"></div>
+              <div class="column"></div>
+            </div>
+            <div class="entrance">
+              <div class="door-arch"></div>
+            </div>
+          </div>
+          <div class="wing right-wing">
+            <div class="window-row">
+              <div class="arched-window"></div>
+              <div class="arched-window"></div>
+            </div>
+            <div class="window-row">
+              <div class="arched-window"></div>
+              <div class="arched-window"></div>
+            </div>
+          </div>
+        </div>
+        <div class="building-base"></div>
+      </div>
+
+      <div class="london-eye">
+        <div class="eye-supports">
+          <div class="support-leg left"></div>
+          <div class="support-leg right"></div>
+        </div>
+        <div class="eye-wheel">
+          <div class="spokes"></div>
+          <div class="hub"></div>
+          <div class="capsule c1"></div>
+          <div class="capsule c2"></div>
+          <div class="capsule c3"></div>
+          <div class="capsule c4"></div>
+          <div class="capsule c5"></div>
+          <div class="capsule c6"></div>
+          <div class="capsule c7"></div>
+          <div class="capsule c8"></div>
+          <div class="capsule c9"></div>
+          <div class="capsule c10"></div>
+          <div class="capsule c11"></div>
+          <div class="capsule c12"></div>
+          <div class="capsule c13"></div>
+          <div class="capsule c14"></div>
+          <div class="capsule c15"></div>
+          <div class="capsule c16"></div>
+        </div>
+        <div class="eye-base"></div>
+      </div>
+    </div>
+
+    <div class="kainos-scene">
+      <div class="viruses-container">
+        <div class="virus v1">
+          <div class="v-spikes"></div>
+          <div class="v-body">
+            <div class="v-eyes">
+              <div class="v-eye left"></div>
+              <div class="v-eye right"></div>
+            </div>
+            <div class="v-mouth"></div>
+          </div>
+        </div>
+        <div class="virus v2">
+          <div class="v-spikes"></div>
+          <div class="v-body">
+            <div class="v-eyes">
+              <div class="v-eye left"></div>
+              <div class="v-eye right"></div>
+            </div>
+            <div class="v-mouth"></div>
+          </div>
+        </div>
+        <div class="virus v3">
+          <div class="v-spikes"></div>
+          <div class="v-body">
+            <div class="v-eyes">
+              <div class="v-eye left"></div>
+              <div class="v-eye right"></div>
+            </div>
+            <div class="v-mouth"></div>
+          </div>
+        </div>
+        <div class="virus v4">
+          <div class="v-spikes"></div>
+          <div class="v-body">
+            <div class="v-eyes">
+              <div class="v-eye left"></div>
+              <div class="v-eye right"></div>
+            </div>
+            <div class="v-mouth"></div>
+          </div>
+        </div>
+        <div class="virus v5">
+          <div class="v-spikes"></div>
+          <div class="v-body">
+            <div class="v-eyes">
+              <div class="v-eye left"></div>
+              <div class="v-eye right"></div>
+            </div>
+            <div class="v-mouth"></div>
+          </div>
+        </div>
+      </div>
+      <div class="home-scene">
+        <div class="home-roof"></div>
+        <div class="home-body">
+          <div class="home-window"></div>
+          <div class="home-door"></div>
+        </div>
+      </div>
+      <div class="kainos-building">
+        <div class="kainos-logo-container">
+          <img src="/kainos-logo.png" alt="Kainos Logo" class="kainos-logo-img" />
+        </div>
+        <div class="kainos-structure">
+          <div class="kainos-roof"></div>
+          <div class="kainos-body">
+            <div class="kainos-window-grid">
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+              <div class="k-window"></div>
+            </div>
+            <div class="kainos-entrance">
+              <div class="entrance-overhang"></div>
+              <div class="entrance-doors">
+                <div class="door-pillar"></div>
+                <div class="door-glass"></div>
+                <div class="door-glass"></div>
+                <div class="door-pillar"></div>
+              </div>
+            </div>
+          </div>
+          <div class="kainos-base"></div>
+        </div>
+      </div>
+
+      <div class="charitable-building">
+        <div class="charitable-logo-container">
+          <img src="/charitable-logo.png" alt="CharitableBookings Logo" class="charitable-logo" />
+        </div>
+        <div class="charitable-roof"></div>
+        <div class="charitable-body">
+          <div class="charitable-windows">
+            <div class="window-row">
+              <div class="win"></div>
+              <div class="win"></div>
+            </div>
+            <div class="window-row">
+              <div class="win"></div>
+              <div class="win"></div>
+            </div>
+          </div>
+          <div class="charitable-entrance"></div>
+        </div>
+      </div>
+
+      <div class="dancing-man">
+        <div class="head"></div>
+        <div class="body">
+          <div class="arm left"></div>
+          <div class="arm right">
+            <div class="money-bag">£</div>
+          </div>
+        </div>
+        <div class="legs">
+          <div class="leg left"></div>
+          <div class="leg right"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ground">
+      <div class="pedestrians-container">
+        <div class="human h1">
+          <div class="umbrella"></div>
+          <div class="head"></div>
+          <div class="body"></div>
+          <div class="legs"></div>
+        </div>
+        <div class="human h2">
+          <div class="umbrella"></div>
+          <div class="head"></div>
+          <div class="body"></div>
+          <div class="legs"></div>
+        </div>
+        <div class="human h3">
+          <div class="umbrella"></div>
+          <div class="head"></div>
+          <div class="body"></div>
+          <div class="legs"></div>
+        </div>
+      </div>
+      <div class="track"></div>
+      <div class="stations-container"></div>
+    </div>
+    <div class="train-container">
+      <div class="train">
+        <div class="cabin"></div>
+        <div class="window"></div>
+        <div class="wheels">
+          <div class="wheel"></div>
+          <div class="wheel"></div>
+        </div>
+      </div>
+      <div class="info-wrapper">
+        <div class="card-info">
+          <div class="title">BSc Computer Science - King's College London</div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- GSAP CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
