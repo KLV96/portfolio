@@ -1,4 +1,5 @@
 function initPhotoModal() {
+    console.log('Photo modal initialized');
     const modal = document.getElementById('photo-modal');
     const img = document.querySelector('.profile-photo');
     const modalImg = document.getElementById('expanded-photo');
@@ -26,7 +27,7 @@ function initPhotoModal() {
         e.stopPropagation();
         openModal();
     });
-    
+
     // Ensure cursor pointer style
     img.style.cursor = 'pointer';
 
