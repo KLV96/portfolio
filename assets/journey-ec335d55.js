@@ -3,7 +3,7 @@ import"./modulepreload-polyfill-3cfb730f.js";const s=[{year:"2016 - 2019",projec
         <h3>${t.title}</h3>
         
         ${t.date?`<h3 style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px;">${t.date}</h3>`:""}
-        ${t.location?`<p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px;">${t.location}</p>`:""}
+        ${t.location?`<h3 style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px;">${t.location}</h3>`:""}
         
         <p>${t.description}</p>
         ${t.modules?`
