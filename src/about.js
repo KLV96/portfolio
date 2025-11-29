@@ -1,34 +1,65 @@
-document.addEventListener('DOMContentLoaded', () => {
+function initPhotoModal() {
     const modal = document.getElementById('photo-modal');
     const img = document.querySelector('.profile-photo');
     const modalImg = document.getElementById('expanded-photo');
     const closeBtn = document.querySelector('.close-modal');
 
-    if (img && modal && modalImg) {
-        img.onclick = function () {
-            modal.classList.add('active');
-            modalImg.src = this.src;
-        }
+    if (!img || !modal || !modalImg) {
+        console.error('Photo modal: Required elements not found', { img: !!img, modal: !!modal, modalImg: !!modalImg });
+        return;
+    }
 
-        const closeModal = () => {
-            modal.classList.remove('active');
-        }
+    const openModal = () => {
+        modalImg.src = img.src;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    };
 
-        if (closeBtn) {
-            closeBtn.onclick = closeModal;
-        }
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
 
-        modal.onclick = (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        }
+    // Open modal on image click
+    img.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        openModal();
+    });
+    
+    // Ensure cursor pointer style
+    img.style.cursor = 'pointer';
 
-        // Close on Escape key
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && modal.classList.contains('active')) {
-                closeModal();
-            }
+    // Close modal on close button click
+    if (closeBtn) {
+        closeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeModal();
         });
     }
-});
+
+    // Close modal when clicking on backdrop (not the image itself)
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            e.preventDefault();
+            closeModal();
+        }
+    });
+
+    // Close on Escape key
+    const escapeHandler = (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    };
+    document.addEventListener('keydown', escapeHandler);
+}
+
+// Run on DOM ready or immediately if already loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPhotoModal);
+} else {
+    // DOM already loaded
+    initPhotoModal();
+}
