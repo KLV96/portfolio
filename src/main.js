@@ -82,7 +82,7 @@ class App {
         <h3>${p.title}</h3>
         
         ${p.date ? `<h3 style="color: #cbd5e1; font-size: 0.9rem; margin-bottom: 5px;">${p.date}</h3>` : ''}
-        ${p.location ? `<p style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px;">${p.location}</p>` : ''}
+        ${p.location ? `<h3 style="color: #94a3b8; font-size: 0.85rem; margin-bottom: 10px;">${p.location}</h3>` : ''}
         
         <p>${p.description}</p>
         ${p.modules ? `
