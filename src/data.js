@@ -119,7 +119,7 @@ export const timelineData = [
     projects: [
       {
         title: "Associate Software Engineer at Kainos",
-        description: "Contributed as an Associate Software Engineer on weekends, focusing on developing new features, optimizing existing functionality, and resolving critical bugs to ensure platform stability.",
+        description: "Continued working as an Associate Software Engineer at Kainos on the HM Passport Office (HMPO) website for the past three years, focusing on developing new features, optimizing existing functionality, and resolving critical bugs to ensure platform stability.",
         tech: ["Java", "Spring Boot", "TypeScript", "Node.js", "React"],
         demo: "#",
         repo: "#",
