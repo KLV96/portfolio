@@ -1964,7 +1964,7 @@ body.raining .umbrella {
 
   .controls {
     position: absolute;
-    top: 120px;
+    top: 100px;
     /* Requested position */
     right: auto;
     bottom: auto;
@@ -2003,7 +2003,7 @@ body.raining .umbrella {
 
   .card-info {
     flex: 0 1 auto;
-    max-width: 500px;
+    max-width: 540px;
   }
 
   /* When there are 3+ cards: stack vertically */
@@ -2863,12 +2863,16 @@ body.pandemic-mode .viruses-container {
   }
 
   .back-button-container {
-    top: 180px;
+    top: 160px;
     right: auto;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     display: flex;
     justify-content: center;
+  }
+
+  .year-display {
+    font-size: 1.5rem;
   }
 }

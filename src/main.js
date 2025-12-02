@@ -89,10 +89,6 @@ class App {
         <button class="modules-toggle">Modules I’ve studied ▼</button>
         <div class="modules-content hidden">
           <div class="module-section">
-            <h4>Activities and societies</h4>
-            <ul>${p.modules.activitiesAndSocieties.map(s => `<li>${s}</li>`).join('')}</ul>
-          </div>
-          <div class="module-section">
             <h4>First Year</h4>
             <ul>${p.modules.firstYear.map(m => `<li>${m}</li>`).join('')}</ul>
           </div>
