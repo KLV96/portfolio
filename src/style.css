@@ -2875,4 +2875,9 @@ body.pandemic-mode .viruses-container {
   .year-display {
     font-size: 1.5rem;
   }
+
+  .modules-content:not(.hidden) {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
 }
