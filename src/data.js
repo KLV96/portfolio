@@ -105,7 +105,7 @@ export const timelineData = [
       },
       {
         title: "Remote Tutor at Tutorful",
-        description: "Provided tutoring in Computing, Mathematics, and Arabic to GCSE and A-Level students, and supported university students with coursework assistance. Completed over 500 hours of teaching. Got 5 stars review from 23 students."
+        description: "Provided tutoring in Computing, Mathematics, and Arabic to GCSE and A-Level students, and supported university students with coursework assistance. Completed over 500 hours of teaching. Got 5 stars review from 23 students. My tutorful profile: https://tutorful.co.uk/tutors/o6wd3v48"
       },
       {
         title: "Full Stack Engineer at CharitableBookings.com",
@@ -126,7 +126,7 @@ export const timelineData = [
       },
       {
         title: "Freelance Web Developer",
-        description: "Results-driven freelance developer specializing in building and deploying high-performance, full-stack web applications. Expertise centers around the React.js and Next.js ecosystems, delivering scalable and responsive platforms with features like Server-Side Rendering (SSR) and dynamic internationalization (i18n). Handled the entire project lifecycle, managing databases, integrating with payment/postal gateways, and ensuring efficient deployments using Shell Scripting for automation and streamlined maintenance on various Web Hosting environments.",
+        description: "Spearheaded the full-stack development and deployment of multiple international, multilingual websites using cutting-edge technologies like React and Node.js. I managed the complete project lifecycle, overseeing database administration and ensuring seamless integration with complex payment and postal gateways. Furthermore, I optimized infrastructure management across various Web Hosting environments by implementing Shell Scripting for robust automation and streamlined maintenance, while utilizing Google Analytics to monitor performance and inform advertising strategy.",
         tech: ["React", "Next.js", "TypeScript", "Node.js", "MySQL", "Web Hosting", "Payment Gateway", "Postal Gateway", "Shell Scripting"],
       }
     ],
