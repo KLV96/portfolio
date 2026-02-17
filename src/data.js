@@ -3,7 +3,7 @@ export const timelineData = [
     year: "2016 - 2019",
     projects: [
       {
-        title: "BSc Computer Science - Kign's College London",
+        title: "BSc Computer Science - King's College London",
         description:
           "I completed a broad and rigorous computer science curriculum, developing strong foundations in systems, algorithms, logic, databases, programming, operating systems, networks, and software engineering through both theoretical study and practical project work. In my later years, I focused on advanced topics including artificial intelligence, security, web and network algorithms, and large-scale internet application development, strengthening both my technical depth and applied problem-solving skills.",
         modules: {
