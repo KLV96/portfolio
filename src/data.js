@@ -51,7 +51,7 @@ export const timelineData = [
         repo: "#",
       },
       {
-        title: "Full Stack Engineer - Internship",
+        title: "Full Stack Engineer",
         date: "Feb-2018 to Sep 2018",
         location: "London",
         description:
@@ -72,7 +72,7 @@ export const timelineData = [
     year: "2019 - 2020",
     projects: [
       {
-        title: "Trainee Software Engineer at Kainos",
+        title: "Full Stack Engineer at Kainos",
         description: "For my first year at Kainos,  I worked on the new Learning Platform for Government (LPG) project which provides a learning and development platform for civil servants. This allows users to take responsibility and ownership of their own personal development with learning, training and compliance courses via an online platform.",
         tech: ["Java", "Spring Boot", "TypeScript", "Node.js", "HTML", "CSS", "Git"],
         keyContributions: [
@@ -91,7 +91,7 @@ export const timelineData = [
     year: "2020 - 2022",
     projects: [
       {
-        title: "Associate Software Engineer at Kainos",
+        title: "Full Stack Engineer at Kainos",
         description: "I've been working on the HM Passport Office (HMPO) website where UK citizens can apply for passports online. It has been a great experience, and knowing there are millions of users using the website annually adds to the excitement.",
         tech: ["Java", "Spring Boot", "TypeScript", "Node.js", "React"],
         responsibilities: [
@@ -118,8 +118,8 @@ export const timelineData = [
     year: "2022 - 2025",
     projects: [
       {
-        title: "Associate Software Engineer at Kainos",
-        description: "Continued working as an Associate Software Engineer at Kainos on the HM Passport Office (HMPO) website for the past three years, focusing on developing new features, optimizing existing functionality, and resolving critical bugs to ensure platform stability.",
+        title: "Full Stack Engineer at Kainos",
+        description: "Continued working on the HM Passport Office (HMPO) website for the past three years, focusing on developing new features, optimizing existing functionality, and resolving critical bugs to ensure platform stability.",
         tech: ["Java", "Spring Boot", "TypeScript", "Node.js", "React"],
         demo: "#",
         repo: "#",
@@ -130,5 +130,25 @@ export const timelineData = [
         tech: ["React", "Next.js", "TypeScript", "Node.js", "MySQL", "Web Hosting", "Payment Gateway", "Postal Gateway", "Shell Scripting"],
       }
     ],
+  },
+  {
+    year: "2026 - Present",
+    projects: [
+      {
+        title: "Full Stack Engineer at Kainos",
+        description: "Continuing to work on the HM Passport Office (HMPO) website, focusing on developing new features, optimizing existing functionality, and resolving critical bugs to ensure platform stability.",
+        responsibilities: [
+          "Lead the design and development of scalable, high-performance software solutions aligned with business goals.",
+          "Architect and review system design, APIs, and database structures to ensure maintainability and reliability.",
+          "Mentor and guide junior and mid-level developers through code reviews and technical coaching.",
+          "Drive technical decision-making, including technology selection, architecture patterns, and best practices.",
+          "Collaborate with cross-functional teams (Product, QA, DevOps) to deliver high-quality releases on time.",
+          "Troubleshoot and resolve complex production issues while improving system performance and stability.",
+        ],
+        tech: ["Java", "Spring Boot", "TypeScript", "Node.js", "React"],
+        demo: "#",
+        repo: "#",
+      },
+    ]
   }
 ];
