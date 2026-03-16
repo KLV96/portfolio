@@ -159,6 +159,9 @@ class App {
     } else if (currentYear == "2022 - 2025") {
       document.body.classList.add("kainos-theme", "charitable-visible");
       document.body.classList.remove("university-theme", "sunny-weather", "pandemic-mode", "charitable-building-active");
+    } else if (currentYear == "2026 - Present") {
+      document.body.classList.add("kainos-theme", "sunny-weather");
+      document.body.classList.remove("university-theme", "charitable-visible", "pandemic-mode", "charitable-building-active");
     } else {
       document.body.classList.remove("university-theme", "kainos-theme", "sunny-weather", "charitable-visible", "pandemic-mode", "charitable-building-active");
     }

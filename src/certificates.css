@@ -1,0 +1,382 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f172a;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Header ──────────────────────────────────────── */
+.page-header {
+  text-align: center;
+  padding: 60px 20px 20px;
+}
+
+.page-header h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  margin-bottom: 10px;
+}
+
+.page-header p {
+  color: #94a3b8;
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+/* ─── Back Button ─────────────────────────────────── */
+.back-button-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 100;
+}
+
+.back-home-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.back-home-btn:hover {
+  color: #fff;
+}
+
+/* ─── Timeline Wrapper ────────────────────────────── */
+.timeline-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 55vh;
+  padding: 280px 60px 40px;
+  overflow: visible;
+}
+
+.timeline {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 0;
+}
+
+/* Horizontal connecting line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #334155 10%, #334155 90%, transparent);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+/* ─── Timeline Node ───────────────────────────────── */
+.timeline-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  margin: 0 50px;
+  z-index: 1;
+}
+
+/* Circle */
+.node-circle {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: #1e293b;
+  border: 2px solid #475569;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-node:hover .node-circle,
+.timeline-node.active .node-circle {
+  background: #38bdf8;
+  border-color: #38bdf8;
+  box-shadow:
+    0 0 12px rgba(56, 189, 248, 0.8),
+    0 0 30px rgba(56, 189, 248, 0.4);
+  transform: scale(1.3);
+}
+
+/* Year label below circle */
+.node-label {
+  margin-top: 14px;
+  font-size: 0.78rem;
+  color: #64748b;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.timeline-node:hover .node-label,
+.timeline-node.active .node-label {
+  color: #38bdf8;
+}
+
+/* Short certificate title under the year */
+.node-cert-title {
+  margin-top: 5px;
+  font-size: 0.7rem;
+  color: #475569;
+  max-width: 120px;
+  text-align: center;
+  line-height: 1.3;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: color 0.3s ease;
+}
+
+.timeline-node:hover .node-cert-title {
+  color: #94a3b8;
+}
+
+/* ─── Hover Preview Card ──────────────────────────── */
+.preview-card {
+  position: absolute;
+  bottom: calc(100% + 24px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  width: 220px;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 12px;
+  padding: 14px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+}
+
+.timeline-node:hover .preview-card {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Arrow pointer */
+.preview-card::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 7px solid transparent;
+  border-top-color: #334155;
+}
+
+.preview-thumb {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #0f172a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.preview-thumb-placeholder {
+  width: 100%;
+  height: 100px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #1e3a5f, #0f172a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.preview-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.preview-issuer {
+  font-size: 0.75rem;
+  color: #38bdf8;
+  margin-bottom: 2px;
+}
+
+.preview-date {
+  font-size: 0.72rem;
+  color: #64748b;
+}
+
+.preview-hint {
+  margin-top: 8px;
+  font-size: 0.7rem;
+  color: #475569;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* ─── Full-screen Modal ───────────────────────────── */
+.cert-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.cert-modal.visible {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+}
+
+.modal-content {
+  position: relative;
+  z-index: 1;
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 16px;
+  padding: 36px;
+  max-width: 780px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+  transform: scale(0.95);
+  transition: transform 0.3s ease;
+}
+
+.cert-modal.visible .modal-content {
+  transform: scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  color: #64748b;
+  font-size: 1.6rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-cert-image {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  border: 1px solid #334155;
+}
+
+.modal-cert-placeholder {
+  width: 100%;
+  height: 320px;
+  border-radius: 10px;
+  margin-bottom: 24px;
+  background: linear-gradient(135deg, #1e3a5f 0%, #0f172a 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border: 1px dashed #334155;
+}
+
+.modal-cert-placeholder .ph-icon {
+  font-size: 3rem;
+}
+
+.modal-cert-placeholder p {
+  color: #475569;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.modal-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #f1f5f9;
+}
+
+.modal-issuer {
+  font-size: 0.95rem;
+  color: #38bdf8;
+  margin-bottom: 4px;
+}
+
+.modal-date {
+  font-size: 0.85rem;
+  color: #64748b;
+}
+
+/* ─── Count Badge ─────────────────────────────────── */
+.cert-count {
+  text-align: center;
+  color: #475569;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  margin-bottom: 60px;
+}
+
+/* ─── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
