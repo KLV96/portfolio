@@ -10,6 +10,7 @@ export default defineConfig({
                 contact: 'contact.html',
                 projects: 'projects.html',
                 journey: 'journey.html',
+                certificates: 'certificates.html',
             },
         },
     },
