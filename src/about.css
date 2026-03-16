@@ -271,6 +271,11 @@ h1 {
     color: #f5c46b;
 }
 
+.goal-note {
+    color: #7dd3fc;
+    font-size: 0.95em;
+}
+
 .back-home-btn {
     display: inline-flex;
     align-items: center;
