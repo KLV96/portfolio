@@ -8,6 +8,7 @@ class CertificatesPage {
         this.modalIssuer = document.querySelector('.modal-issuer');
         this.modalDate = document.querySelector('.modal-date');
         this.modalImageContainer = document.querySelector('.modal-image-container');
+        this.modalFullpageLink = document.getElementById('modal-fullpage-link');
         this.modalClose = document.querySelector('.modal-close');
         this.modalBackdrop = document.querySelector('.modal-backdrop');
         this.certCount = document.querySelector('.cert-count');
@@ -64,6 +65,13 @@ class CertificatesPage {
         this.modalTitle.textContent = cert.title;
         this.modalIssuer.textContent = cert.issuer;
         this.modalDate.textContent = cert.date;
+
+        if (cert.standaloneUrl) {
+            this.modalFullpageLink.href = cert.standaloneUrl;
+            this.modalFullpageLink.style.display = '';
+        } else {
+            this.modalFullpageLink.style.display = 'none';
+        }
 
         // Image or placeholder
         this.modalImageContainer.innerHTML = cert.image

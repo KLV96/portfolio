@@ -4,7 +4,8 @@ export const certificates = [
         title: "HSK 1",
         issuer: "Hanban Confucius Institute",
         date: "2021",
-        image: "/certs/HSK1.png"
+        image: "/certs/HSK1.png",
+        standaloneUrl: "/certificates/hsk1/"
     },
     {
         id: 2,

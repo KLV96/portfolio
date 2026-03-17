@@ -11,6 +11,7 @@ export default defineConfig({
                 projects: 'projects.html',
                 journey: 'journey.html',
                 certificates: 'certificates.html',
+                'certificates/hsk1': 'certificates/hsk1/index.html',
             },
         },
     },

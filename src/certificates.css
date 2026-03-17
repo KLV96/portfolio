@@ -353,6 +353,20 @@ body {
   color: #64748b;
 }
 
+.modal-fullpage-link {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 0.9rem;
+  color: #38bdf8;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  transition: color 0.2s;
+}
+
+.modal-fullpage-link:hover {
+  color: #7dd3fc;
+}
+
 /* ─── Count Badge ─────────────────────────────────── */
 .cert-count {
   text-align: center;
