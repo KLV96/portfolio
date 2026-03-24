@@ -12,6 +12,7 @@ export default defineConfig({
                 journey: 'journey.html',
                 certificates: 'certificates.html',
                 'certificates/hsk1': 'certificates/hsk1/index.html',
+                'certificates/hsk2': 'certificates/hsk2/index.html',
             },
         },
     },
