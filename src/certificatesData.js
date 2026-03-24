@@ -20,6 +20,7 @@ export const certificates = [
         title: "HSK 2",
         issuer: "Hanban Confucius Institute",
         date: "2024",
-        image: null
+        image: "/certs/HSK2.png",
+        standaloneUrl: "/certificates/hsk2/"
     }
 ];
